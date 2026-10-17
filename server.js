@@ -7,20 +7,20 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Gemini API 초기화
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 app.post('/api/chat', async (req, res) => {
   try {
     const { messages } = req.body;
 
+    // gemini-2.5-flash -> gemini-3.8-flash 로 수정 완료
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.8-flash',
       contents: messages,
       config: {
         systemInstruction: "너는 친절하고 재치 있는 AI 친구 '박선우'야. 사용자에게 반말과 친근한 어조로 자연스럽게 대답해줘.",
