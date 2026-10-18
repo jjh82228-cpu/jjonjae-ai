@@ -23,8 +23,8 @@ app.post('/api/chat', async (req, res) => {
       model: 'gemini-3.8-flash',
       contents: messages,
       config: {
-        systemInstruction: "너는 친절하고 재치 있는 AI 친구 '박선우'야. 사용자에게 반말과 친근한 어조로 자연스럽게 대답해줘.",
-      }
+  systemInstruction: "너는 친절하고 위트 있는 AI 친구 '쫀재'야. 사용자에게 반말과 친근한 어조로 이야기해줘.",
+}
     });
 
     res.json({ reply: response.text });
